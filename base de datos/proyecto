@@ -1,0 +1,189 @@
+-- --------------------------------------------------------
+-- Host:                         localhost
+-- Versión del servidor:         10.1.28-MariaDB - mariadb.org binary distribution
+-- SO del servidor:              Win32
+-- HeidiSQL Versión:             9.4.0.5125
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+-- Volcando estructura de base de datos para proyecto
+CREATE DATABASE IF NOT EXISTS `proyecto` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci */;
+USE `proyecto`;
+
+-- Volcando estructura para tabla proyecto.ejercicios
+CREATE TABLE IF NOT EXISTS `ejercicios` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_grupo` int(10) unsigned NOT NULL,
+  `ejercicio` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `imagen` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `explicacion` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tiempo` int(11) NOT NULL,
+  `material` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `posicion` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `consejo` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ejercicios_id_grupo_foreign` (`id_grupo`),
+  CONSTRAINT `ejercicios_id_grupo_foreign` FOREIGN KEY (`id_grupo`) REFERENCES `grupos` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Volcando datos para la tabla proyecto.ejercicios: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `ejercicios` DISABLE KEYS */;
+INSERT INTO `ejercicios` (`id`, `id_grupo`, `ejercicio`, `imagen`, `explicacion`, `tiempo`, `material`, `posicion`, `consejo`, `created_at`, `updated_at`) VALUES
+	(1, 1, 'Curl de bíceps con barra', 'https://github.com/Team-Gym/FitnessTeam_Repository/blob/master/imgEjercicios/biceps/curl_biceps.png', 'inspira y flexiona los antebrazos sin flexionar la espalda. Espira al acabar el movimiento.', 5, 'Barra o mancuerna', 'Ponte de pie, manten la espalda recta, coge la barra en supinación (posición de la mano con la palma hacia arriba). Separa las manos a una distancia un poco mayor que la anchura de los hombro', 'Para entrenar con mayor intensidad la porción corta del bíceps, separa más las manos.\r\nPara entrenar la porción larga del bíceps, junta más las manos.\r\nEleva los codos al final del ejercicio,', NULL, NULL),
+	(2, 1, 'Curl de biceps con barra y agarre en pronación', 'https://github.com/Team-Gym/FitnessTeam_Repository/blob/master/imgEjercicios/biceps/Curl_de_biceps_con_barra_y_agarre_en_pronacion.jpg', 'inspira y flexiona los antebrazos. Espira al final del movimiento.', 5, 'Barra', 'Movimiento del antebrazo que hace girar la mano de fuera a dentro presentando el dorso de ella).', '', NULL, NULL),
+	(3, 1, 'Curl de bíceps con polea', 'https://github.com/Team-Gym/FitnessTeam_Repository/blob/master/imgEjercicios/biceps/curl_con_polea.png', 'Inspira y haz una flexión del antebrazo. Espira cuando acabes el movimiento.', 5, 'Polea', ' ponte de pie frente al aparato. Coge el mango en supinación (posición de la mano con la palma hacia arriba).', '', NULL, NULL),
+	(4, 1, 'Curl de bíceps tipo martillo', 'https://github.com/Team-Gym/FitnessTeam_Repository/blob/master/imgEjercicios/biceps/curl_martillo_depie.png', 'Inspira y haz una flexión de los antebrazos. Tienes la opción de hacerlo con los dos brazos de forma', 5, 'Mancuerna', ' puedes hacerlo de pie o sentado. Coge una mancuerna con cada mano en semipronación (movimiento del antebrazo que hace girar la mano de fuera a dentro presentando el dorso de ella).', '', NULL, NULL),
+	(5, 1, 'Curl de bíceps con apoyo en muslo', 'https://github.com/Team-Gym/FitnessTeam_Repository/blob/master/imgEjercicios/biceps/curl_concentrado_rodila.png', 'Inspira y haz una flexión del antebrazo. Espira al final del ejercicio.', 5, 'Mancuerna', 'siéntate y coge una mancuerna en supinación (posición de la mano con la palma hacia arriba). Apoya el codo en la parte interna del muslo.', '', NULL, NULL),
+	(6, 1, 'Curl de bíceps alternos con supinación', 'https://github.com/Team-Gym/FitnessTeam_Repository/blob/master/imgEjercicios/biceps/curl_biceps_aberto.png', 'Inspira y flexiona los antebrazos hacia los brazos. Haz una rotación externa de la muñeca antes de q', 5, 'Mancuernas', 'siéntate, coge las mancuernas una con cada mano en semipronación (movimiento del antebrazo que hace girar la mano de fuera a dentro presentando el dorso de ella).', '', NULL, NULL),
+	(7, 1, 'Bíceps en banco Scott', 'https://github.com/Team-Gym/FitnessTeam_Repository/blob/master/imgEjercicios/biceps/biceps_en_banco_scott.png', 'Inspira y flexiona los brazos. Espira al acabar el movimiento.', 5, 'Barra de manos y banco Scott', 'Siéntate en la máquina, coge la barra con las manos en posición de supinación (la palma de la manos hacia arriba). Manten los brazos estirados con los codos apoyados sobre el soporte.', 'Calienta bien los músculos y no te pases con la carga de peso, evitarás lesiones como la tendinitis.', NULL, NULL),
+	(10, 2, 'Dipping entre dos bancos', 'https://github.com/Team-Gym/FitnessTeam_Repository/blob/master/imgEjercicios/triceps/triceps_fondos_entre_bancos.png', 'Inspira y haz una flexión de antebrazos, seguida de una extensión de antebrazos hacia arriba. Espira', 5, 'Dos bancos', 'coge dos bancos y colocalos en paralelo. Apoya las manos en el borde de uno y coloca los pies en el otro. El cuerpo queda en el vacio entre ambos.', 'Si quieres hacer el entrenamiento más intenso, ponte un peso sobre los muslos, asi dificultarás la extensión', NULL, NULL),
+	(11, 2, 'Extensión con mancuernas para tríceps. Tronco incl', 'https://github.com/Team-Gym/FitnessTeam_Repository/blob/master/imgEjercicios/triceps/Extension_con_mancuernas_para_triceps_tronco_inclinado.png', 'Inspira y haz una extensión de antebrazo. Espira al final del movimiento.', 5, 'Mancuernas', ' ponte de pie y flexiona un poco las piernas. Inclina el tronco hacia delante y manten la espalda recta. El brazo colocalo en horizontal, paralelo al cuerpo y con el codo flexionado.', 'Te recomendamos hacer series largas con poco peso hasta que notes que pica un poco el músculo', NULL, NULL),
+	(12, 2, 'Extensión de los brazos sentado y con barra', 'https://github.com/Team-Gym/FitnessTeam_Repository/blob/master/imgEjercicios/triceps/Extension_de_los_brazos_sentado_y_con_barra.jpg', 'inspira y haz una extensión de antebrazos. Espira al final del movimiento.', 5, 'Barra de manos', 'siéntate y coge la barra con las dos manos en pronación (movimiento del antebrazo que hace girar la mano de fuera a dentro presentando el dorso de ella). Lleva la barra detrás de la nuca.', 'No curves la espalda\r\nSi te es posible, utiliza un banco con respaldo cordo', NULL, NULL),
+	(13, 2, 'Extensión de antebrazos sentado. Mancuerna a dos m', 'https://github.com/Team-Gym/FitnessTeam_Repository/blob/master/imgEjercicios/triceps/triceps_sentado_dos_brazos_una_mancuerna.png', 'inspira y haz una extensión de antebrazos. Espira al final del movimiento.', 5, 'Mancuerna', 'siéntate y coge la mancuerna a dos manos por detrás de la nuca.', 'Contrae la banda abdominal cuando hagas el ejercicio para evitar curvar la espalda', NULL, NULL),
+	(14, 2, 'Extensión vertical de los brazos con mancuerna. Tr', 'https://github.com/Team-Gym/FitnessTeam_Repository/blob/master/imgEjercicios/triceps/Extension_vertical_de_los_brazos_con_mancuerna.jpg', 'inspira y haz una extensión del antebrazo. Espira al final del movimiento.', 5, 'Mancuerna', 'puedes hacer el ejercicio sentado o de pie. Coge la mancuerna con una mano y llevala detrás de la nuca.', '', NULL, NULL),
+	(15, 2, 'Press francés en banco plano con mancuernas', 'https://github.com/Team-Gym/FitnessTeam_Repository/blob/master/imgEjercicios/triceps/triceps_presbanca_dos_mancuernas.png', 'inspira y haz una extensión de los antebrazos. Espira al final del movimiento.', 5, 'Mancuerna', 'estírate horizontalmente sobre el banco. Agarra cada mancuena con una mano y flexiona los codos.', '', NULL, NULL),
+	(16, 2, 'Press francés en banco plano', 'https://github.com/Team-Gym/FitnessTeam_Repository/blob/master/imgEjercicios/triceps/triceps_presbanca_multipower.png', 'inspira y haz una extensión de los antebrazos sin separar los codos. Haz descender la barra  hasta l', 5, 'Mancuerna o barra de manos', 'estírate en el banco cara arriba. Agarra la barra en pronación (movimiento del antebrazo que hace girar la mano de fuera a dentro presentando el dorso de ella). Manten los antebrazos flexiona', 'Si quieres trabajar principalmente el vasto externo e interno del tríceps, haz descender la barra hasta la altura de la frente\r\nPara hacer un mayor esfuerzo sobre la porción larga del tríceps', NULL, NULL),
+	(17, 2, 'Extensión alternada de antebrazos en polea alta', 'https://github.com/Team-Gym/FitnessTeam_Repository/blob/master/imgEjercicios/triceps/Extension_alternada_de_antebrazos_en_polea_alta.png', 'inspira y haz una extensión del brazo. Espira al final del ejercicio. Realiza la serie primero con u', 5, 'Polea alta', 'ponte de pie mirando el aparato. Coge el agarre en supinación (posición de la mano con la palma hacia arriba).', '', NULL, NULL),
+	(18, 2, 'Extensión de tríceps en polea alta. Agarre invertido', 'https://github.com/Team-Gym/FitnessTeam_Repository/blob/master/imgEjercicios/triceps/Extension_de_triceps_en_polea_alta_agarre_invertido.jpg', 'inspira y estira los antebrazos sin separar los codos del cuerpo. Espira al final del movimiento.', 5, 'Polea alta', 'ponte de pie mirando el aparato, los brazos deben estar en paralelo al cuerpo, flexiona los codos y manten las manos por encima de las muñecas.', 'Realiza este ejercicio para tríceps con poca carga en el aparato', NULL, NULL),
+	(19, 2, 'Extensión de tríceps en polea alta', 'https://github.com/Team-Gym/FitnessTeam_Repository/blob/master/imgEjercicios/triceps/Extension_alternada_de_antebrazos_en_polea_alta.png', 'haz extensiones de los antebrazos. Los codos no deben despegarse del cuerpo. Espira al final del mov', 5, 'Polea alta', 'ponte de pie mirando el aparato. Agarra el mango con las manos y manten los codos alineados con el cuerpo.', '', NULL, NULL),
+	(20, 3, 'Pull-Over con barra en banco plano', '', 'inspira y baja la barra por detrás de la cabeza flexionando ligeramente los codos. Espira mientras v', 5, 'Barra de manos', 'tumbate en un banco plano cara arriba. Coge la barra en pronación (movimiento del antebrazo que hace girar la mano de fuera a dentro presentando el dorso de ella), y estira lo brazos. Separa ', '', NULL, NULL),
+	(21, 3, 'Pull-Over con mancuerma\r\n', '', 'inspira y baja la mancuerna por detras de la cabeza flexionado los codos. Después vuelve a la posici', 5, 'Mancuerna', 'estírate en un banco cara arriba con los pies apoyados en el suelo. Coge una mancuerna con las dos manos (discos de la mancuerna apoyados sobre las manos, los dedos pulgar e índice cerrando e', '', NULL, NULL),
+	(22, 3, 'Aperturas en máquina contractora de pecho', '', 'inspira y junta los brazos al máximo. Espira al final del movimiento.', 5, '', ' siéntate en la máquina de musculación contractora de pecho. Separa los brazos en posición horizontal, los codos flexionados y apoyados sobre el punto (normalmente una almohadilla). Relaja lo', 'Ejercicio indicado para principiantes, les permite coger fuerza para la realización de ejercicios más complejos.\r\nSe consigue una congestión intensa de los músculos, pare ello recomendamos ha', NULL, NULL),
+	(23, 3, 'Apertura con mancuernas en banco inclinado', '', 'inspira y separa los brazos hasta la horizontal. Luego elevalos hasta la vertical, espira al mismo t', 5, 'Mancuernas', 'siéntate en un banco inclinado (45º-60º), coge las mancuernas y extiende los brazos verticalmente. También puedes extenderlos un poco flexionados para no sobrecargar la articulación.', 'Ejercicio adecuado para aumentar la capacidad torácica', NULL, NULL),
+	(24, 3, 'Press con mancuernas en banco inclinado', '', 'inspira y estira los brazos verticalmente acercando las mancuernas. Vuelve a la posición inicial con', 5, 'Mancuernas', ' siéntate en un banco inclinado (no mas de 60º) con los codos flexionados. Coge las mancuernas en pronación (movimiento del antebrazo que hace girar la mano de fuera a dentro presentando el d', '', NULL, NULL),
+	(25, 3, 'Apertura de mancuernas en banco plano', '', 'inspira y separa los brazos hasta la horizontal.  Luego elevalos hasta la posición inicial. Espira d', 5, 'Mancuernas', 'tumbate boca arriba sobre un banco estrecho, así no dificultarás los movimientos de los hombros.  Coge las mancuernas con las manos y extiendelos brazos. Manten los codos flexionados para no ', 'Este ejercicio ayuda a aumentar la capacidad pulmonar, ya que conseguimos expandir la caja torácica\r\nConseguimos aumentar la flexibilidad de nuestros músculos.\r\nCuidado con utlizar mucho peso', NULL, NULL),
+	(26, 3, 'Dips en paralelas', '', 'inspira y flexiona totalmente los antebrazos sobre los brazos hasta que el pecho quede al nivel de l', 5, 'Maquina paralela', 'apóyate sobre las barras paralelas con los brazos estirados, las piernas quedan colgando.', 'Si quieres trabajar principalmente los pectorales, manten el cuerpo inclinado hacia delante\r\nCon la espalda recta se intensifica el esfuerzo sobre los tríceps', NULL, NULL),
+	(27, 3, 'Press de banco declinado', '', 'inspira y baja la barra sobre la parte baja de los pectorales. Controla durante todo el movimiento e', 5, 'Barra de mano', 'acuéstate con la cabeza hacia abajo. El banco tiene que estar inclinado unos 20º-40º. Fija los pies en las almohadillas y coge la barra en pronación (movimiento del antebrazo que hace girar l', 'Si quieres marcar el surco inferior de tus pectorales, este ejercicio es muy recomendable\r\nEjercicio adecuado para aumentar la flexibilidad del pectoral mayor', NULL, NULL),
+	(28, 3, 'Press de banco inclinado', '', 'inspira y baja la barra hasta la horquilla esternal. Sube la barra hasta la posición inicial, espira', 5, 'Barra de mano', 'siéntate en un banco inclinado (45º-60º). Coge la barra con las manos en pronación (movimiento del antebrazo que hace girar la mano de fuera a dentro presentando el dorso de ella). Las manos ', '', NULL, NULL),
+	(29, 4, 'El “TWIST” abdominal', '', 'Haz rotaciones de pelvis hacia un lado y luego hacia otro, manten siempre la posición de los hombros', 5, 'Sin material', 'ponte de pie en la placa giratoria que las máquinas dedicadas a este ejercicio tienen. Las manos en los agarres.', 'Flexiona un poco las rodillas para evitar tirones y controlar las rotaciones\r\nSi quieres intensificar el esfuerzo sobre los oblicuos, flexiona ligeramente la espalda', NULL, NULL),
+	(30, 4, 'Flexión lateral del tronco en banco', '', 'Flexiona lateralmente el tronco hacia arriba.', 5, '', 'el ejercicio se realiza sobre el banco específico de las extensiones lumbares. Apoya la cadera en el banco, el tronco debe quedar en el vacio, pon las manos en el pecho o detrás de la cabeza,', '', NULL, NULL),
+	(31, 4, 'Flexión lateral del tronco con mancuerna', '', 'Flexiona lateralmente el tronco hacia el otro lado de la mancuerna. Luego vuelve a la posición inici', 5, 'Mancuerna', 'ponte de pie, separa un poco las piernas, pon una mano detrás de la cabeza y otra agarrando la mancuerna.', '', NULL, NULL),
+	(32, 4, 'Rotación del tronco con bastón', '', 'Haz rotaciones del tronco primero hacia un lado y luego hacia otro, manten el bastón inmóvil mediant', 5, 'Bastón', 'ponte de pie con las piernas separadas, coge un bastón y colócalo a nivel de los trapecios por encima de los deltoides posteriores. Apoya las manos sobre el bastón sin apretar excesivamente. ', 'Realiza series de varios minutos para conseguir buenos resultados.', NULL, NULL),
+	(33, 4, 'Elevación de piernas suspendido en barra fija', '', 'Inspirar y elevar las rodillas lo más arriba posible. Tienes que intentar acercar el pubis al estern', 5, 'Barra', 'suspendido en la barra fija.', 'Haz oscilaciones de los muslos, nunca con las rodillas por encima de la horizontal. Concentrarás así el esfuerzo sobre la banda abdominal.', NULL, NULL),
+	(34, 4, 'Elevaciones de rodillas en paralelas', '', 'Inspira y eleva las rodillas hacia el pecho flexionando la espalda. De esta manera se contrae la ban', 5, '', 'apóyate sobre los codos, manten la espalda firme.', 'Haz oscilaciones de las piernas flexionando la espalda hacia los lados. De esta manera localizarás el trabajo sobre la zona abdominal. Nunca lo hagas situando las rodillas por debajo de la ho', NULL, NULL),
+	(35, 4, 'Elevación de piernas en plancha inclinada', '', 'Eleva las piernas hasta colocarlas en posición horizontal. Separa la pelvis del banco flexionando la', 5, '', 'estírate sobre la plancha y agarra los barrotes con las manos.', '', NULL, NULL),
+	(36, 4, 'Encogimientos abdominales “CRUNCH” en máquina', '', 'Inspira y flexiona la columna vertebral, intenta acercar el esternón al pubis. Espira al final del e', 5, '', ' siéntate en la máquina, con los pies bajo los cojines y manos en los agarres.', '', NULL, NULL),
+	(37, 4, 'Encogimientos abdominales “CRUNCH” en polea alta', '', 'inspira y flexiona la columna para acercar el esternón al pubis. Espira durante la realización del e', 5, '', 'de rodillas en el suelo con la barra detrás de la nuca.', '', NULL, NULL),
+	(38, 5, 'Curl de piernas alterno en máquina', '', 'inspira y flexiona la rodilla. Espira cuando acabes el movimiento.', 5, '', 'ponte de pie con el tronco apoyado en el soporte. Fija la rodilla en la almohadilla, la pierna extendida y el tobillo bajo el cojín.', 'Para trabajar más intensamente los gemelos, haz el ejercicio con el tobillo en flexión', NULL, NULL),
+	(39, 5, 'Elevación de talones sentado con barra', '', 'haz una elevación de los talones.', 5, '', 'siéntate en un banco con una cuña bajo la punta de los pies. Apoya la barra sobre los muslos.', 'Permite trabajar con mayores cargas que el ejercicio en máquina de musculación\r\nSe recomienda trabajar este ejercicio en series largas (15-20 repeticiones) hasta tener la sensación de quemazó', NULL, NULL),
+	(40, 5, 'Extensión de talones sentado en máquina', '', 'haz una extensión de los pies.', 5, '', 'siéntate sobre la máquina y apoya la parte alta de los muslos sobre el asiento. La punta de los pies sobre la calza y los tobillos en flexión pasiva.', '', NULL, NULL),
+	(41, 5, 'Gemelos en máquina de musculación', '', 'haz extensiones de los pies.', 5, '', 'Ponte de pie, apoyado sólo sobre una pierna. La punta del pie que está apoyado, colócala sobre una cuña. Con la mano del lado del pie apoyado, coge una mancuerna. Con la otra mano coge algún ', '', NULL, NULL),
+	(42, 5, 'Elevación de un talón con mancuerna', '', 'haz una elevación del talón. Mantén en todo momento la articulación de la rodilla extendida o flexio', 5, 'Mancuerna', 'ponte de pie, apoyado sólo sobre una pierna. La punta del pie que está apoyado, colócala sobre una cuña. Con la mano del lado del pie apoyado, coge una mancuerna. Con la otra mano coge algún ', '', NULL, NULL),
+	(43, 5, 'Elevación de talones de pie, en máquina', '', 'haz una extensión de los pies. La rodilla mántenla durante todo el ejercicio en extensión.', 5, '', 'ponte de pie y manten la espalda completamente recta. Los hombros por debajo de las almohadillas que tiene la máquina de musculación. Las puntas de los pies colocadas sobre las calzas de la m', '', NULL, NULL),
+	(44, 5, 'Abductores en máquina de musculación', '', 'junta los muslos. Vuelve a la posición inicial controlando durante todo el movimiento la carga.', 5, '', 'siéntate en la máquina de musculación con las piernas separadas.', 'Haz series largas hasta que notes que el músculo parece quemar. Conseguirás así los mejores resultados', NULL, NULL),
+	(45, 5, 'Abductores en polea baja', '', 'desplaza la pierna por delante de la que está apoyada.', 5, '', 'Ponte de pie, apoyado sólo sobre una pierna. Ata la otra pierna a la correa de la polea.  La mano opuesta a la pierna atada, apóyala sobre la polea o sobre cualquier otra cosa.', 'Ejercicio en polea baja indicado para definir el interior de los muslos. Para conseguirlo, haz series de repeticiones largas.', NULL, NULL),
+	(46, 5, 'Flexión del tronco al frente (Buenos Dias) ', '', 'inspira y flexiona el tronco hasta la horizontal. Manten la espalda recta en todo momento, la flexió', 5, '', 'ponte de pie y separa ligeramente tus pies. Apoya la barra sobre los trapecios o más abajo, sobre los deltoides posteriores.', 'Para hacerlo con más facilidad, flexiona ligeramente las rodillas\r\nSu práctica regular puede evitar lesiones que se producen en el squat clásico', NULL, NULL),
+	(47, 6, 'Zancadas “Lunges”', '', 'inspira y haz una zancada hacia delante. Trata de mantener el tronco lo más recto posible. Durante l', 5, 'Mancuernas(Opcional)', 'ponte de pie con las piernas ligeramente separadas. Apoya la barra por detrás de la nuca sobre los trapecios.', 'Si quieres centrar el esfuerzo sobre el cuádriceps, haz un paso simple en la zancada\r\nSi quieres trabajar más los isquiotibiales y el glúteo mayor, haz una zancada más larga', NULL, NULL),
+	(48, 6, 'Abductores sentado, en máquina de musculación', '', 'separa los muslos al máximo.', 5, '', 'siéntate en la máquina de musculación y apoya las piernas en las almohadillas.', 'Ejercicio indicado para las mujeres, ya que reafirma la parte superior de las caderas y permite marcar la cintura haciéndola más fina. Además de mejorar la apariencia de tus glúteos.', NULL, NULL),
+	(49, 6, 'Abducción de la cadera, acostado', '', 'haz elevaciones laterales de la pierna. La rodilla has de mantenerla siempre extendida. La abducción', 5, '', 'acuéstate de lado y manten la cabeza erguida.', '', NULL, NULL),
+	(50, 6, 'Abducción de la cadera de pie, en máquina', '', 'eleva la pierna lateralmente. Luego vuelve a la posición inicial controlando la carga en todo moment', 5, '', ' ponte de pie sobre la máquina de musculación. Apoya una pierna en la plataforma de la máquina. El cojín se coloca en la cara externa de la otra pierna, por debajo de la articulación de la ro', '', NULL, NULL),
+	(51, 6, 'Abduccion de la cadera de pie, en polea baja', '', 'haz elevaciones laterales de la pierna lo más alto posible.', 5, '', 'ponte de pie apoyado sólo sobre una pierna. La otra pierna atada a la polea baja. La mano opuesta a la pierna atada, apoyada para mantener el equilibrio.', '', NULL, NULL),
+	(52, 6, 'Elevación de la pelvis en el suelo', '', 'inspira y separa las nalgas del suelo presionando los pies con fuerza. Manten la posición unos segun', 5, '', 'tumbate en el suelo sobre la espalda. Las manos abiertas y apoyadas en el suelo. Manten los brazos paralelos al cuerpo y las rodillas flexionadas.', 'Haz series largas para notar los resultados en tus glúteos. Es muy importante hacer la contracción al final de la primera parte (la elevación de la pelvis)', NULL, NULL),
+	(53, 6, 'Extensión de la cadera en el suelo', '', 'tira la pierna apoyada sobre el pecho hacia detrás, hasta que hagas una extensión completa de la cad', 5, '', 'ponte de rodillas en el suelo sobre una pierna, la otra apoyada sobre el pecho. Apóyate sobre los codos o sobre las manos con los brazos extendidos.', 'Si sólo quieres trabajar el glúteo mayor, haz el ejercicio con la rodilla flexionada\r\nPara aumentar la intensidad del esfuerzo en los glúteos, haz una contracción isométrica de un par de segu', NULL, NULL),
+	(54, 6, 'Extensión de la cadera en máquina de musculación', '', 'inspira y tira el muslo hacia detrás para poner la cadera en hiperextensión. Mantén la contracción e', 5, '', 'tira el tronco un poco hacia delante y coge los agarres con las manos. Apoya una de las piernas sobre el cojín (en la articulación de la rodilla, a media distancia del tobillo).', '', NULL, NULL),
+	(55, 6, 'Extensión de la cadera en polea baja', '', 'haz una extensión de la cadera.', 5, '', 'ponte de pie cara a la polea. Agarra los mangos con las manos e inclina la pelvis hacia delante. Apoya una pierna en el suelo y la otra átala a la polea baja.', 'Ejercicio indicado para conseguir un buen perfil y reafirmar las nalgas', NULL, NULL),
+	(56, 7, 'Tracción o dominadas en barra fija', '', 'inspira y haz una tracción hasta que la nuca casi toque la barra. Espira al final de la dominada.', 5, '', 'para la realización de las dominadas tienes que quedar suspendido dobre la barra fija. Separa las manos en pronación (movimiento del antebrazo que hace girar la mano de fuera a dentro present', '', NULL, NULL),
+	(57, 7, 'Encogimiento de hombros en máquina', '', 'haz encogimientos de hombros manteniendo la espalda y cabeza rectas.', 5, '', 'ponte de pie cara a la máquina. Coge la barra en pronación (movimiento del antebrazo que hace girar la mano de fuera a dentro presentando el dorso de ella). Las manos separadas a una distanci', '', NULL, NULL),
+	(58, 7, 'Encogimiento y rotación de los hombros con mancuer', '', 'haz encogimientos de hombros con una rotación antero-posterior. Luego vuelve a la posición inicial.', 5, 'Mancuernas', 'ponte de pie con las piernas ligeramente separadas. Manten la cabeza relajada o inclinada hacia delante. Los brazos relajados y pegados al cuerpo. Coge una mancuerna con cada mano.', '', NULL, NULL),
+	(59, 7, 'Encogimientos de hombros con barra', '', 'haz encogimientos de hombros', 5, 'Barra', 'ponte de pie de cara a la barra, con las piernas ligeramente separadas. Manten los brazos relajados, la espalda recta y los abdominales contraidos. Coge la barra en pronación o en agarre inve', '', NULL, NULL),
+	(60, 7, 'Remo al cuello con manos juntas', '', 'Inspira y tira de la barra a lo largo del cuerpo hasta el mentón. Sube los codos lo más alto posible', 5, '', ' ponte de pie con las piernas un poco separadas. Manten la espalda recta. Coge la barra en pronación (movimiento del antebrazo que hace girar la mano de fuera a dentro presentando el dorso de', '', NULL, NULL),
+	(61, 7, 'Extensiones del tronco en banco de 90º', '', 'con el tronco flexionado, haz una extensión hasta la horizontal levantando la cabeza. Al llegar, haz', 5, '', 'ponte sobre el banco y fija los pies. La flexión se hace por la articulación coxofemoral. El pubis queda fuera del banco.', 'Ten cuidado al hacer la hiperextensión para no dañarte la espalda. Para intensificar el esfuerzo puedes mantener unos segundos la horizontalidad del tronco. Luego bajar con cuidado a la posic', NULL, NULL),
+	(62, 7, 'Peso muerto (Sumo)', '', 'Inspira y flexiona las piernas hasta que alcanzes la horizontal. Extiende los brazos y coge la barra', 5, '', 'ponte de pie cara a la barra. Separa las piernas y pon la punta de los pies hacia el exterior, siempre en el eje de las rodillas.', '', NULL, NULL),
+	(63, 7, 'Peso muerto con barra', '', 'Flexiona las piernas y lleva los muslos hasta la horizontal. Coge la barra con los brazos estirados.', 5, '', 'ponte de pie cara a la barra y separa mucho las piernas. Los pies colocados hacia el exterior en el eje de las rodillas.', 'Manten la espalda recta durante todo el ejercicio. Cuidado si cargas mucho peso, si no eres prudente pueden verse afectados los muslos, las caderas y la articulación sacro-lumbar', NULL, NULL),
+	(64, 7, 'Peso muerto, piernas semirigidas', '', 'Inclina el tronco hacia delante con la espalda arqueada y si puedes, manten las piernas extendidas. ', 5, '', 'deja la barra en el suelo. Ponte de pie con las piernas ligeramente flexionadas y separadas cara a la barra.', 'Para evitar lesiones, no arquees la espalda durante el movimiento', NULL, NULL),
+	(65, 7, 'Remo en barra “T” con apoyo al pecho', '', 'inspira y lleva la barra hasta el pecho. Espira al final del movimiento.', 5, '', 'ponte de pie con las rodillas flexionadas. La barra cogida en pronación (movimiento del antebrazo que hace girar la mano de fuera a dentro presentando el dorso de ella) queda entre las pierna', 'Normalmente en los gimnasios encontrarás la variante de este ejercicio en máquina. Invirtiendo el agarre en pronación a agarre en supinación, parte del esfuerzo se pasa al bíceps braquial y a', NULL, NULL),
+	(66, 8, 'Press sentado con mancuernas', '', 'inspira y eleva los brazos verticalmente. Espira al final del movimiento.', 5, '', 'siéntate en un banco y manten la espalda recta. Coge las mancuernas en pronación (movimiento del antebrazo que hace girar la mano de fuera a dentro presentando el dorso de ella) a la altura d', 'También puedes hacer el ejercicio de pie o alternando ambos brazos. Utiliza si te es posible un respaldo que evite la curvatura de la espalda en exceso', NULL, NULL),
+	(67, 8, 'Encogimiento de hombros en máquina', '', 'haz encogimientos de hombros manteniendo la espalda y cabeza rectas.', 5, '', 'ponte de pie cara a la máquina. Coge la barra en pronación (movimiento del antebrazo que hace girar la mano de fuera a dentro presentando el dorso de ella). Las manos separadas a una distanci', '', NULL, NULL),
+	(68, 8, 'Encogimiento y rotación de los hombros con mancuer', '', 'haz encogimientos de hombros con una rotación antero-posterior. Luego vuelve a la posición inicial.', 5, '', 'ponte de pie con las piernas ligeramente separadas. Manten la cabeza relajada o inclinada hacia delante. Los brazos relajados y pegados al cuerpo. Coge una mancuerna con cada mano.', '', NULL, NULL),
+	(69, 8, 'Encogimientos de hombros con barra', '', 'haz encogimientos de hombros.', 5, '', 'ponte de pie de cara a la barra, con las piernas ligeramente separadas. Manten los brazos relajados, la espalda recta y los abdominales contraidos. Coge la barra en pronación o en agarre inve', '', NULL, NULL),
+	(70, 8, 'Remo al cuello con manos juntas', '', 'Inspira y tira de la barra a lo largo del cuerpo hasta el mentón. Sube los codos lo más alto posible', 5, '', 'ponte de pie con las piernas un poco separadas. Manten la espalda recta. Coge la barra en pronación (movimiento del antebrazo que hace girar la mano de fuera a dentro presentando el dorso de ', '', NULL, NULL),
+	(71, 8, 'Deltoides en máquina de musculación', '', 'inspira y separa los brazos hasta juntar los omoplatos. Espira al final del movimiento. Controla la ', 5, '', 'siéntate frente a la máquina, apoya el pecho sobre el respaldo y coge los mangos con las manos. Los brazos estirados hacia delante.', '', NULL, NULL),
+	(72, 8, 'Elevación lateral en máquina de musculación', '', 'inspira y eleva los codos hasta la horizontal. Controla el peso que hayas cargado en la máquina dura', 5, '', 'siéntate en la máquina y coge los mangos.', 'Si quieres trabajar también el trapecio, eleva los brazos por encima de la horizontal.\r\nEjercicio en máquina de musculación indicado para principiantes', NULL, NULL),
+	(73, 8, 'Rowing vertical con manos separadas', '', 'inspira y eleva la barra hasta la barbilla. Trata de elevar los codos lo más arriba posible en la re', 5, '', 'ponte pie con las piernas separadas ligeramente. Coge la barra en pronación (movimiento del antebrazo que hace girar la mano de fuera a dentro presentando el dorso de ella) y apóyala sobre lo', '', NULL, NULL),
+	(74, 8, 'Elevación frontal con barra', '', 'inspira y eleva la barra con los brazos estirados. Llevala hasta la altura de los ojos.  Espira cuan', 5, '', 'ponte de pie y separa un poco las piernas. Coge la barra con las manos en pronación y apoyala sobre los muslos. Manten la espalda recta y los abdominales contraidos.', '', NULL, NULL),
+	(75, 8, 'Elevación frontal con una mancuerna', '', 'inspira y eleva la mancuerna hasta la altura de los ojos. Baja hasta la posición inicial controlando', 5, '', 'ponte de pie y separa las piernas. Manten la espalda bien recta y contrae tus abdominales. Coge una mancuerna con las manos cruzadas sobre el mango y apoyala sobre tu muslo. Estira los brazos', '', NULL, NULL),
+	(76, 9, 'Curl de antebrazos con barra en pronación', '', 'Haz extensiones de muñeca.', 5, '', 'siéntate y apoya los antebrazos sobre un banco o sobre los muslos. Agarra la barra con las manos en pronación (movimiento del antebrazo que hace girar la mano de fuera a dentro presentando el', 'Haz este ejercicio para fortalecer la articulación de la muñeca', NULL, NULL),
+	(77, 9, 'Curl de antebrazos con barra, agarre en supinación', '', 'inspira y flexiona las muñecas. Espira al final del movimiento.', 5, 'Barra', 'siéntate y apoya los brazos sobre los muslos o sobre un banco. Coge las barra con las manos en supinación (posición de la mano con la palma hacia arriba), mantén las muñecas en flexión pasiva', '', NULL, NULL),
+	(78, 9, 'Curl de biceps con barra y agarre en pronación', '', 'inspira y flexiona los antebrazos. Espira al final del movimiento.', 5, '', 'ponte de pie y separa las piernas un poco. Extiende los brazos con las manos colocadas en pronación (movimiento del antebrazo que hace girar la mano de fuera a dentro presentando el dorso de ', '', NULL, NULL);
+/*!40000 ALTER TABLE `ejercicios` ENABLE KEYS */;
+
+-- Volcando estructura para tabla proyecto.grupos
+CREATE TABLE IF NOT EXISTS `grupos` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `grupo` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Volcando datos para la tabla proyecto.grupos: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `grupos` DISABLE KEYS */;
+INSERT INTO `grupos` (`id`, `grupo`, `created_at`, `updated_at`) VALUES
+	(1, 'Bíceps', NULL, NULL),
+	(2, 'Tríceps', NULL, NULL),
+	(3, 'Pecho', NULL, NULL),
+	(4, 'Abdominales', NULL, NULL),
+	(5, 'Piernas', NULL, NULL),
+	(6, 'Glúteos', NULL, NULL),
+	(7, 'Espalda', NULL, NULL),
+	(8, 'Hombros', NULL, NULL),
+	(9, 'Antebrazos', NULL, NULL);
+/*!40000 ALTER TABLE `grupos` ENABLE KEYS */;
+
+-- Volcando estructura para tabla proyecto.migrations
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Volcando datos para la tabla proyecto.migrations: ~4 rows (aproximadamente)
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+	(1, '2014_10_12_000000_create_users_table', 1),
+	(2, '2014_10_12_100000_create_password_resets_table', 1),
+	(3, '2018_05_21_140830_create_grupos_table', 1),
+	(4, '2018_05_21_140837_create_ejercicios_table', 1);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+
+-- Volcando estructura para tabla proyecto.password_resets
+CREATE TABLE IF NOT EXISTS `password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Volcando datos para la tabla proyecto.password_resets: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
+
+-- Volcando estructura para tabla proyecto.users
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Volcando datos para la tabla proyecto.users: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
