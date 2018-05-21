@@ -1,0 +1,45 @@
+.cuerpo{
+  background-color: #000000;
+}
+.no-padding {
+  padding: 0;
+}
+#seccion2{
+  padding-top: 80px;
+  background-color: #32383B;
+  max-width: 100%;
+}
+
+#encabezado{
+  background-color: #147CB0;
+  margin-top: 56px;
+
+}
+
+#e{
+  color: #353B3E;
+}
+#fila1-ejercicios{
+  padding-top: 50px;
+
+}
+
+#titulo2{
+  padding-top: 70px;
+  color:#FFFFFF;
+}
+#titulo1{
+  color:#FFFFFF;
+
+}
+#c1{
+  padding: 10px;
+}
+#pie{
+
+}
+#lista-redes-so{
+  padding-left: 500px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
